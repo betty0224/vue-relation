@@ -11,7 +11,7 @@ const router = new Router({
 });
 
 router.beforeEach((route, redirect, next) => {
-  if (!window.localStorage.getItem('Authorization') && route.path !=='/login') {
+  if (!window.localStorage.getItem('token') && route.path !=='/login') {
     next({
       path:'/login',
       query:{redirect: route.fullPath}
