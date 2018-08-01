@@ -1,8 +1,9 @@
-import Vue from 'vue'
-import Router from 'vue-router'
+import Vue from 'vue';
+import Router from 'vue-router';
+import {sync} from "vuex-router-sync";
 import routerConfig from './routes';
 
-Vue.use(Router)
+Vue.use(Router);
 
 //定义路由
 const router = new Router({

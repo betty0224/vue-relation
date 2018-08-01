@@ -4,6 +4,7 @@ import Vue from 'vue';
 import App from './App';
 import router from './router';
 import store from './store';
+import frame from "./frame.vue";
 import Element from "element-ui";
 import 'element-ui/lib/theme-default/index.css';
 
@@ -14,6 +15,5 @@ new Vue({
   el: '#app',
   store,
   router,
-  components: { App },
-  template: '<App/>'
+  render: h => h(frame)
 });

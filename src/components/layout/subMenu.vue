@@ -14,11 +14,16 @@ import subMenu from "./subMenu.vue"
 export default {
   name: "subMenu",
   props:['param'],
-  data: () => ({item: this.param}),
+  data: function () {
+      return {item: this.param}
+    },
   components: {
     subMenu
   }
 }
 </script>
 <style scoped>
+.el-submenu .el-menu {
+  background: #10161e;
+}
 </style>

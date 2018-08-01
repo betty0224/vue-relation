@@ -61,7 +61,7 @@
         accountLogin(this.form.username,md5(this.form.password).toUpperCase()).then(res =>{
           this.loginSuccess(res.obj.userInfo,redirectUrl);
           window.localStorage.setItem('token','Bearer '+res.obj.userInfo.token);
-
+          this.$router.push({path: redirectUrl});
         });
       },
       loginSuccess(user,redirectUrl){
@@ -111,7 +111,7 @@
     letter-spacing: 3px;
   }
   .lg-input {
-    transform: translate(5%,50%);
+    transform: translate(20%,50%);
   }
   .show-delay4 {
       transition: all linear 0.1s;
@@ -129,6 +129,8 @@
     margin-right: -40px;
     position: relative;
     z-index: 1000;
+    text-align:center;
+
   }
   .lg-input .lg-in .input {
     background-color: rgba(255,255,255,0.1);
@@ -152,7 +154,7 @@
     border-radius: 4px;
     color: #fff;
     font-size: 16px;
-    margin-left: -45px
+    margin-left: 50px
   }
   .login {
     margin-top: 160px;

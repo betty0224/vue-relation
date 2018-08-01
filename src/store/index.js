@@ -17,9 +17,50 @@ const store = new Vuex.Store({
   },
   state: {
     loading: false,
-    menuList: {},
+    menuList: [
+      {"id":1,"parentId":null,"sort":0,"name":"数描画像","href":"/index","icon":"fa fa-dashboard","children":[],"isShow":"1"},
+      {"id":31,"parentId":null,"sort":1,"name":"全息搜索","href":"/test/1","icon":"fa fa-upload","children":[],"isShow":"1"},
+      {"id":913,"parentId":null,"sort":0,"name":"场景大厅","href":"/test/1/1/2","icon":"fa fa-area-chart","children":[] ,"isShow":"1"},
+      {"id":93,"parentId":null,"sort":0,"name":"话单分析","href":"/test/1/2","icon":"fa fa-area-chart","children":
+              [
+                {"id":103,"parentId":913,"sort":0,"name":"话单分析","href":"/test/2/1","icon":"fa fa-image","children":[],"isShow":"1"},
+                {"id":104,"parentId":913,"sort":0,"name":"分析快照","href":"/test/2/1","icon":"fa fa-image","children":[],"isShow":"1"},
+                {"id":105,"parentId":913,"sort":0,"name":"历史话单","href":"/test/2/1","icon":"fa fa-image","children":[],"isShow":"1"}
+            ],
+        "isShow":"1"},
+      {"id":102,"parentId":null,"sort":3,"name":"关系配置","href":"/test/2","icon":"fa fa-download","children":
+                [
+                  {"id":103,"parentId":102,"sort":0,"name":"雪花配置","href":"/test/2/1","icon":"fa fa-image","children":[],"isShow":"1"},
+                  {"id":104,"parentId":102,"sort":0,"name":"关系配置","href":"/test/2/1","icon":"fa fa-image","children":[],"isShow":"1"},
+                  {"id":105,"parentId":102,"sort":0,"name":"简单关系","href":"/test/2/1","icon":"fa fa-image","children":[],"isShow":"1"}
+                ],
+        "isShow":"1"},
+      {"id":6,"parentId":null,"sort":6,"name":"主题配置","href":"/sys","icon":"fa fa-cog","children":
+                [
+                  {"id":108,"parentId":6,"sort":0,"name":"主题数据抽取配置","href":"/sys/resource","icon":"fa fa-database","children":[],"isShow":"1"},
+                  {"id":109,"parentId":6,"sort":0,"name":"索引配置","href":"/sys/resource","icon":"fa fa-database","children":[],"isShow":"1"},
+                  {"id":110,"parentId":6,"sort":0,"name":"主题表管理","href":"/sys/resource","icon":"fa fa-database","children":[],"isShow":"1"},
+                  {"id":111,"parentId":6,"sort":0,"name":"标签任务管理","href":"/sys/resource","icon":"fa fa-database","children":[],"isShow":"1"},
+                  {"id":112,"parentId":6,"sort":0,"name":"百科数据源配置","href":"/sys/resource","icon":"fa fa-database","children":[],"isShow":"1"}
+                ],
+        "isShow":"1"},
+      {"id":7,"parentId":null,"sort":1,"name":"系统配置","href":"/sys/menuList","icon":"fa fa-navicon","children":
+                [
+                  {"id":113,"parentId":7,"sort":0,"name":"图库管理","href":"/sys/resource","icon":"fa fa-database","children":[],"isShow":"1"},
+                  {"id":114,"parentId":7,"sort":0,"name":"操作记录","href":"/sys/resource","icon":"fa fa-universal-access","children":[],"isShow":"1"},
+                  {"id":115,"parentId":7,"sort":0,"name":"日志管理","href":"/sys/resource","icon":"fa fa-database","children":[],"isShow":"1"}
+                ],
+        "isShow":"1"},
+      {"id":9,"parentId":null,"sort":3,"name":"触网报警","href":"/sys/userList","icon":"fa fa-user-plus","children":
+                [
+                  {"id":116,"parentId":9,"sort":2,"name":"实时报警","href":"/sys/roleList","icon":"fa fa-universal-access","children":[],"isShow":"1"},
+                  {"id":117,"parentId":9,"sort":2,"name":"警情管理","href":"/sys/roleList","icon":"fa fa-universal-access","children":[],"isShow":"1"},
+                  {"id":118,"parentId":9,"sort":2,"name":"报警配置","href":"/sys/roleList","icon":"fa fa-universal-access","children":[],"isShow":"1"}
+                ],
+        "isShow":"1"}
+    ],
     sidebar: {
-      collapsed: getLocalKey('state.sidebar.collapsed','false') === 'true'
+      collapsed: false
     },
     userInfo: {name:'佚名'}
   },

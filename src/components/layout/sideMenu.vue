@@ -1,6 +1,6 @@
 <template>
-  <aside class="main-sidebar animated" :class="{ showSlide: sidebar.show,hideSlide:!sidebar.show}">
-    <el-scrollbar tag="div" wrapClass="vue-scrollbar" v-if="(!sidebar.collapsed)">
+  <aside class="main-sidebar" :class="{ showSlide: sidebar.show,hideSlide:!sidebar.show}">
+    <!-- <el-scrollbar tag="div" wrapClass="vue-scrollbar" v-if="(!sidebar.collapsed)">
       <div class="sidebar">
         <el-menu :default-active="onRoutes"
                  :default-openeds="onRouteKeys"
@@ -11,8 +11,8 @@
             </template>
         </el-menu>
       </div>
-    </el-scrollbar>
-    <div class="sidebar" v-else>
+    </el-scrollbar> -->
+    <div class="sidebar">
       <el-menu :default-active="onRoutes"
                 class="el-menu-style"
                 theme="light" router :collapse="sidebar.collapsed" @select="handleSelect">
@@ -46,25 +46,25 @@ export default {
       return this.$route.path;
     },
     onRouteKeys() {
-      const getParentArray = (path,ms,kas =[]) => {
-        if (ms && ms.length >0) {
-          for (let k = 0,length = ms.length; k < length; k++) {
-            if (path == ms[k].href) {
-              kas.push(ms[k].href);
-              break;
-            }
-            let i = kas.length;
-            if (ms[k].children && ms[k].children.length >0) {
-              getParentArray(path,ms[k].children,kas);
-            }
-            if (i < kas.length) {
-              kas.push(ms[k].href);
+      const getParentArray = (path, ms, kas = []) => {
+          if (ms && ms.length > 0) {
+            for (let k = 0, length = ms.length; k < length; k++) {
+              if (path == ms[k].href) {
+                kas.push(ms[k].href);
+                break;
+              }
+              let i = kas.length;
+              if (ms[k].children && ms[k].children.length > 0) {
+                getParentArray(path, ms[k].children, kas);
+              }
+              if (i < kas.length) {
+                kas.push(ms[k].href);
+              }
             }
           }
+          return kas.reverse();
         }
-        return kas.reverse();
-      }
-      return getParentArray(this.$route.path,this.menuList);
+        return getParentArray(this.$route.path, this.menuList);
     },
     // 使用对象展开运算符将 getters 混入 computed 对象中
       ...mapGetters([
@@ -77,7 +77,7 @@ export default {
   },
   created() {
     //do something after creating vue instance
-    this.load();
+    // this.load();
   },
   methods: {
     handleSelect() {
@@ -87,7 +87,6 @@ export default {
       toggleSidebarShow: types.TOGGLE_SIDEBAR_SHOW,
     }),
     ...mapActions({
-      load : 'loadMenuList'
     })
   }
 
@@ -105,13 +104,14 @@ export default {
   }
 
   .main-sidebar {
-    background-color: #ffffff;
+    border-right: 3px solid #000;
+    background-color: transparent;
     position: fixed;
     top: 50px;
     left: 0;
     bottom: 0;
     height: calc(100vh - 50px);
-    width: 44px;
+    width: 220px;
     z-index: 810;
     -webkit-transition: -webkit-transform 0.3s ease-in-out, width 0.3s ease-in-out;
     -moz-transition: -moz-transform 0.3s ease-in-out, width 0.3s ease-in-out;
@@ -125,7 +125,7 @@ export default {
 
   .el-menu-style,
   .el-menu-style .el-menu{
-    background-color: #ffffff;
+    background: #10161e;
   }
   .el-menu-style .el-menu-item:hover,
   .el-menu-style .el-submenu__title:hover{
