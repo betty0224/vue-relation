@@ -7,3 +7,6 @@ export const accountLogin = (username,password) => fetch('/usermanage/login',{us
  * 获取我的场景、场景商店、个人私库数据
  */
 export const getanalysismodel = (creator,order,type) => fetch('/analysismodel/getanalysismodel',{creator,order,type},'GET');
+/**
+ *
+ */

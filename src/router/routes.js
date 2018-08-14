@@ -1,5 +1,5 @@
-import HelloWorld from '@/components/HelloWorld';
-import login from '@/components/pages/login';
+import relationSearch from '../components/relationSearch.vue';
+import login from '../components/pages/login.vue';
 import app from "../App.vue";
 
 const routes = [
@@ -7,9 +7,8 @@ const routes = [
   {
     path: '',component: app,children: [
       {
-        path: '/',
-        name: 'HelloWorld',
-        component: HelloWorld
+        path: '/relationSearch',
+        component: relationSearch
       }
     ]
   }

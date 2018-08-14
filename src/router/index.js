@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import {sync} from "vuex-router-sync";
 import routerConfig from './routes';
+import store from '../store';
 
 Vue.use(Router);
 
@@ -10,9 +11,10 @@ const router = new Router({
   routes: routerConfig,
   //mode: 'history'
 });
+  sync(store ,router);
 
 router.beforeEach((route, redirect, next) => {
-  if (!window.localStorage.getItem('token') && route.path !=='/login') {
+  if (!window.sessionStorage.getItem('token') && route.path !=='/login') {
     next({
       path:'/login',
       query:{redirect: route.fullPath}

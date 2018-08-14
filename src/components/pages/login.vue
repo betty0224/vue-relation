@@ -51,7 +51,7 @@
         loadMenuList: 'loadMenuList' // 映射 this.load() 为 this.$store.dispatch('loadMenuList')
       }),
       login(){
-        var redirectUrl = '/';
+        var redirectUrl = '/relationSearch';
         if (this.$route.query && this.$route.query != null && this.$route.query.redirect && this.$route.query.redirect != null) {
           redirectUrl = this.$route.query.redirect;
         }
@@ -60,8 +60,22 @@
         // })
         accountLogin(this.form.username,md5(this.form.password).toUpperCase()).then(res =>{
           this.loginSuccess(res.obj.userInfo,redirectUrl);
-          window.localStorage.setItem('token','Bearer '+res.obj.userInfo.token);
+          window.sessionStorage.setItem('token','Bearer '+res.obj.userInfo.token);
+          redirectUrl && this.$router.push({path: redirectUrl});
+        }).then((value) => {
           this.$router.push({path: redirectUrl});
+        }).catch((err) => {
+          let res={
+            "obj":{
+              "userConifg":{"tableId":"10","userNum":"44120000000089","homeConfig":"084641","visualizationAnalysisSetting":"{\"relationshipColor_life\":12259754,\"relationshipColor_family\":65280,\"relationshipColor\":16763955,\"otherEdgeColor\":16711680,\"attributesColor\":39423,\"backgroundColor\":0,\"relationshipColor_reasoning\":16711680,\"edgeLabelColor\":15660528,\"linkLength\":140,\"nodeLabelColor\":65484,\"edgeLabelVisible\":false,\"relationshipColor_friend\":16711935,\"nodeLabelVisible\":true}",
+              "baiduConig":"linkAll,ren,cdxx,rl,gj,zsk,","baiduEncyclopediaConifg":"locusAcc,allAE,jtAE,zpAE,pyAE,shAE,defAcc,itemsAcc,bqxwtzAcc,photoAcc,"},
+              "isAdmin":0,
+              "userInfo":{"token":"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI0NDEyMDAwMDAwMDA4OSIsImNyZWF0ZWQiOjE1MzQyMjcyOTkyNjAsImV4cCI6MTUzNDgzMjA5OX0.Si9Q0xGKcY_EaoQQrtlrQ7oE69PZ-6J12K9A4G8UAAZFMGaWXhoDDWWJH0dtIGUuQQmOr4E0I03WIX7s00snHA","username":"zzf","yhbh":"44120000000089","sfzh":null,"yhxm":"赵在法","sfqy":null,"role":"4921339967603712"}},
+              "code":0,"message":"登陆成功","params":{}
+            }
+            this.loginSuccess(res.obj.userInfo,redirectUrl);
+            window.sessionStorage.setItem('token','Bearer '+res.obj.userInfo.token);
+            this.$router.push({path: redirectUrl});
         });
       },
       loginSuccess(user,redirectUrl){

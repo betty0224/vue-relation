@@ -69,7 +69,8 @@ export default {
   mounted () {
       //  [App.vue specific] When App.vue is finish loading finish the progress bar
       // this.$Progress.finish()
-      waterMark(JSON.parse(window.sessionStorage.getItem('user-info')).role);
+      let roleStr = JSON.parse(window.sessionStorage.getItem('user-info'));
+      waterMark(roleStr.yhxm  + ' '+roleStr.role);
     },
     created () {
       //  [App.vue specific] When App.vue is first loaded start the progress bar
@@ -82,7 +83,7 @@ export default {
 //          // parse meta tags
 //          this.$Progress.parseMeta(meta)
 //        }
-        // this.$store.dispatch('changeCurrentMenu',to);
+        this.$store.dispatch('changeCurrentMenu',to);
         //  start the progress bar
         // this.$Progress.start()
         //  continue to next page

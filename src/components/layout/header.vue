@@ -8,8 +8,8 @@
         <span class="sr-only">Toggle navigation</span>
       </a>
       <div class="navbar-custom-menu">
-        <el-dropdown class="navbar-dropdown" trigger="click">
-          <div class="el-dropdown-link" style="height: auto;line-height: inherit">
+        <!-- <el-dropdown class="navbar-dropdown" trigger="click"> -->
+          <div class="description-pro" style="height: auto;line-height: inherit">
             <!-- <el-badge :value="count" class="item"> -->
             <i class="fa fa-book help-size"></i>
             <!-- </el-badge> -->
@@ -23,13 +23,13 @@
             </li>
             </ul>
           </el-dropdown-menu> -->
-        </el-dropdown>
-        <el-dropdown trigger="click"  class="navbar-dropdown">
+        <!-- </el-dropdown> -->
+        <!-- <el-dropdown trigger="click"  class="navbar-dropdown"> -->
             <!-- <span class="el-dropdown-link" title="使用说明书"><a href="../../../assets/js/help/index.html" target="_blank"><i class="fa fa-book help-size"></i></a></span> -->
-            <div class="el-dropdown-link">
+            <div class="el-dropdown-link user-info">
               <img src="../../../static/img/user.png" style="width: 25px;height: 25px;border-radius: 50%; vertical-align: middle;" alt="U">
               欢迎,{{userInfo.yhxm}}
-              <a href class="btn btn-sm moom-btn logout-btn exit" @click="exit()"><i class="fa fa-power-off" uib-popover="退出" popover-placement="bottom" popover-trigger="'mouseenter click'"></i></a>
+              <a href class="btn btn-sm moom-btn logout-btn exit" @click="logout"><i class="fa fa-power-off" uib-popover="退出" popover-placement="bottom" popover-trigger="'mouseenter click'"></i></a>
             </div>
 
 
@@ -43,8 +43,8 @@
                 <div class="pull-right">
                   <el-button type="default" @click="logout">退出</el-button>
                 </div>
-            </el-dropdown-menu> -->
-        </el-dropdown>
+            </el-dropdown-menu>
+        </el-dropdown> -->
       </div>
     </nav>
 
@@ -53,6 +53,7 @@
 <script>
 import {mapGetters, mapActions, mapMutations} from 'vuex'
 import types from '../../store/mutation-types'
+import waterMark from "../../waterMark"
 
 export default {
   data(){
@@ -67,7 +68,13 @@ export default {
   methods: {
     ...mapMutations({
       setUserInfo: types.SET_USER_INFO
-    })
+    }),
+    logout() {
+      waterMark('');
+      window.sessionStorage.removeItem('token');
+      window.sessionStorage.removeItem('user-info');
+      this.$route.push({path:'/login'});
+    }
   },
   created(){
     let item = window.sessionStorage.getItem("user-info");
@@ -154,5 +161,14 @@ export default {
 
   .navbar-custom-menu .el-dropdown-link:hover{
     background: #1b212b;
+  }
+  .description-pro{
+    height: auto;
+    line-height: inherit;
+    width: 30px;
+    display: inline;
+  }
+  .user-info{
+    display: inline-block;
   }
 </style>

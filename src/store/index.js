@@ -18,7 +18,7 @@ const store = new Vuex.Store({
   state: {
     loading: false,
     menuList: [
-      {"id":1,"parentId":null,"sort":0,"name":"数描画像","href":"/index","icon":"fa fa-dashboard","children":[],"isShow":"1"},
+      {"id":1,"parentId":null,"sort":0,"name":"数描画像","href":"/relationSearch","icon":"fa fa-dashboard","children":[],"isShow":"1"},
       {"id":31,"parentId":null,"sort":1,"name":"全息搜索","href":"/test/1","icon":"fa fa-upload","children":[],"isShow":"1"},
       {"id":913,"parentId":null,"sort":0,"name":"场景大厅","href":"/test/1/1/2","icon":"fa fa-area-chart","children":[] ,"isShow":"1"},
       {"id":93,"parentId":null,"sort":0,"name":"话单分析","href":"/test/1/2","icon":"fa fa-area-chart","children":

@@ -126,10 +126,11 @@ export default {
   .el-menu-style,
   .el-menu-style .el-menu{
     background: #10161e;
+    border-right: none;
   }
   .el-menu-style .el-menu-item:hover,
   .el-menu-style .el-submenu__title:hover{
-    background-color: #eeeeee !important;
+    background-color: #06192c !important;
   }
 
   .el-menu-style .el-submenu .el-menu-item {

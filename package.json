@@ -16,7 +16,7 @@
     "axios": "^0.16.2",
     "babel-polyfill": "^6.26.0",
     "echarts": "^3.5.1",
-    "element-ui": "^1.4.8",
+    "element-ui": "^2.4.5",
     "font-awesome": "^4.7.0",
     "js-md5": "^0.7.3",
     "vue": "^2.5.2",
