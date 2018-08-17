@@ -67,8 +67,12 @@ export default {
   }),
   methods: {
     ...mapMutations({
-      setUserInfo: types.SET_USER_INFO
+      setUserInfo: types.SET_USER_INFO,
+      toggleSidebar: types.TOGGLE_SIDEBAR
     }),
+    toggleMenu(collapsed){
+      this.toggleSidebar();
+    },
     logout() {
       waterMark('');
       window.sessionStorage.removeItem('token');
@@ -105,10 +109,10 @@ export default {
     transform: translate(40px,13px);
     -webkit-transition: width 0.3s ease-in-out;
     -o-transition: width 0.3s ease-in-out;
-    transition: width 10.3s ease-in-out;
+    transition: width 0.3s ease-in-out;
     display: block;
     float: left;
-    height: 26px;
+    height: 50px;
     line-height: 50px;
     font-size: 20px;
     text-align: center;
@@ -121,6 +125,13 @@ export default {
     background-image: url(../../assets/homelogo.png);
     background-repeat: no-repeat;
   }
+  .main-header .logo .logo-lg {
+  display: block;
+  height: 38px;
+  line-height: 38px;
+  margin-top: 6px;
+}
+
   .main-header .navbar {
     -webkit-transition: margin-left 0.3s ease-in-out;
     -o-transition: margin-left 0.3s ease-in-out;
@@ -171,4 +182,23 @@ export default {
   .user-info{
     display: inline-block;
   }
+.main-header.closeLogo .navbar{
+  margin-left: 44px;
+}
+
+.main-header.closeLogo .logo{
+  width: 44px;
+  padding: 0 8px;
+}
+.main-header.closeLogo .logo .logo-lg b{
+  display: none;
+}
+.main-header.closeLogo .sidebar-toggle {
+  background: transparent;
+}
+
+.main-header.closeLogo .navbar .sidebar-toggle:before {
+  content: "\f03c";
+}
+
 </style>

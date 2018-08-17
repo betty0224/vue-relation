@@ -3,7 +3,7 @@
     <re-header></re-header>
     <side-menu></side-menu>
 
-    <div class="content-wrapper">
+    <div class="content-wrapper" :class="{ slideCollapse: sidebar.collapsed}">
       <el-scrollbar tag="div" wrapClass="content-scrollbar">
           <section class="content">
             <transition mode="out-in" enter-active-class="fadeIn" leave-active-class="fadeOut" appear>

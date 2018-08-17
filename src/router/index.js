@@ -17,7 +17,7 @@ router.beforeEach((route, redirect, next) => {
   if (!window.sessionStorage.getItem('token') && route.path !=='/login') {
     next({
       path:'/login',
-      query:{redirect: route.fullPath}
+      // query:{redirect: route.fullPath}
     });
   }else{
     next();

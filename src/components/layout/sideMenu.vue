@@ -1,6 +1,6 @@
 <template>
-  <aside class="main-sidebar" :class="{ showSlide: sidebar.show,hideSlide:!sidebar.show}">
-    <!-- <el-scrollbar tag="div" wrapClass="vue-scrollbar" v-if="(!sidebar.collapsed)">
+  <aside class="main-sidebar" :class="{ showSlide: sidebar.show,hideSlide:!sidebar.show, expandSide: !sidebar.collapsed}">
+    <el-scrollbar tag="div" wrapClass="vue-scrollbar" v-if="(!sidebar.collapsed)">
       <div class="sidebar">
         <el-menu :default-active="onRoutes"
                  :default-openeds="onRouteKeys"
@@ -11,8 +11,8 @@
             </template>
         </el-menu>
       </div>
-    </el-scrollbar> -->
-    <div class="sidebar">
+    </el-scrollbar>
+    <div class="sidebar" v-else>
       <el-menu :default-active="onRoutes"
                 class="el-menu-style"
                 theme="light" router :collapse="sidebar.collapsed" @select="handleSelect">
@@ -111,7 +111,7 @@ export default {
     left: 0;
     bottom: 0;
     height: calc(100vh - 50px);
-    width: 220px;
+    width: 48px;
     z-index: 810;
     -webkit-transition: -webkit-transform 0.3s ease-in-out, width 0.3s ease-in-out;
     -moz-transition: -moz-transform 0.3s ease-in-out, width 0.3s ease-in-out;
